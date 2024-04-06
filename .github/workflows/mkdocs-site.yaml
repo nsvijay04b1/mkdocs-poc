@@ -1,0 +1,28 @@
+name: MkDocs Build
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install MkDocs
+      run: |
+        pip install mkdocs
+        pip install mkdocs-material  # Add theme installation if needed
+
+    - name: Build MkDocs Site
+      run: mkdocs build
+
+    - name: Deploy Site
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
