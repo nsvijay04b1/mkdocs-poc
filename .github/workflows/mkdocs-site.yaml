@@ -18,13 +18,6 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Generate Swagger UI
-      uses: Legion2/swagger-ui-action@v1
-      with:
-        output: ./site/api-docs
-        spec-file: ./swagger/swagger.yaml
-        # personal_token: ${{ secrets.PAT }}
-
     - name: Install MkDocs
       run: |
         pip install mkdocs
@@ -32,6 +25,13 @@ jobs:
 
     - name: Build MkDocs Site
       run: mkdocs build
+
+    - name: Generate Swagger UI
+      uses: Legion2/swagger-ui-action@v1
+      with:
+        output: ./site/api-docs
+        spec-file: ./swagger/swagger.yaml
+        # personal_token: ${{ secrets.PAT }}
 
     - name: Deploy Site
       uses: peaceiris/actions-gh-pages@v3
