@@ -18,10 +18,10 @@ jobs:
       with:
         output: swagger-ui
         spec-file: openapi.yaml
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.PAT }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.PAT }}
         publish_dir: swagger-ui
