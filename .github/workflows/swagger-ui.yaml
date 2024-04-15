@@ -12,13 +12,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
 
     - name: Generate Swagger UI
       uses: Legion2/swagger-ui-action@v1
       with:
         output: swagger-ui
         spec-file: static/swagger.yaml
-        personal_token: ${{ secrets.PAT }}
+        # personal_token: ${{ secrets.PAT }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
