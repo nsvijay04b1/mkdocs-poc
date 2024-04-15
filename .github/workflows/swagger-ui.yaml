@@ -21,12 +21,12 @@ jobs:
     - name: Generate Swagger UI
       uses: Legion2/swagger-ui-action@v1
       with:
-        output: swagger-ui
-        spec-file: static/swagger.yaml
+        output: ./api-docs
+        spec-file: ./swagger/swagger.yaml
         # personal_token: ${{ secrets.PAT }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.PAT }}
-        publish_dir: swagger-ui
+        publish_dir: ./site/swagger-ui

@@ -13,6 +13,18 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Generate Swagger UI
+      uses: Legion2/swagger-ui-action@v1
+      with:
+        output: ./site/api-docs
+        spec-file: ./swagger/swagger.yaml
+        # personal_token: ${{ secrets.PAT }}
+
     - name: Install MkDocs
       run: |
         pip install mkdocs
